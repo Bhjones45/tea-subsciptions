@@ -47,9 +47,11 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
+    coderay (1.1.3)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     diff-lcs (1.4.4)
+    docile (1.4.0)
     erubi (1.10.0)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -83,6 +85,9 @@ GEM
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     pg (1.2.3)
+    pry (0.14.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     puma (3.12.6)
     racc (1.6.0)
     rack (2.2.3)
@@ -134,6 +139,14 @@ GEM
       rspec-support (~> 3.10)
     rspec-support (3.10.3)
     ruby_dep (1.5.0)
+    shoulda-matchers (5.0.0)
+      activesupport (>= 5.2.0)
+    simplecov (0.21.2)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.3)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -149,6 +162,7 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
+    vcr (6.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -163,12 +177,16 @@ DEPENDENCIES
   faker
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
+  pry
   puma (~> 3.11)
   rails (~> 5.2.6)
   rspec-rails
+  shoulda-matchers
+  simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
+  vcr
 
 RUBY VERSION
    ruby 2.7.2p137
