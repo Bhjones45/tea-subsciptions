@@ -20,14 +20,19 @@ RSpec.describe 'Subscription requests' do
                   }
 
       post "/api/v1/customers/#{@customer1.id}/subscriptions", params: sub_params
-
       subscription = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to be_successful
       expect(subscription).to have_key(:data)
-      expect(subscription[:data].to have_key(:type))
-      expect(subscription[:data].to have_key(:attributes))
-      expect(subscription[:data][:attributes].to eq([:title, :price, :status, :frequency, :customer_id, :tea_id]))
+      expect(subscription[:data]).to have_key(:type)
+      expect(subscription[:data]).to have_key(:attributes)
+      expected = {
+                  :frequency=>"monthly",
+                  :price=>10.0,
+                  :status=>"active",
+                  :title=>"Super Tea"
+                }
+      expect(subscription[:data][:attributes]).to eq(expected)
     end
   end
 end
