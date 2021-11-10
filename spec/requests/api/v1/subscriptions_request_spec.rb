@@ -36,7 +36,7 @@ RSpec.describe 'Subscription requests' do
     end
   end
 
-  describe 'PATCH /api/v1/customers/:id/subscriptions' do
+  describe 'PATCH /api/v1/customers/:id/subscriptions/:id' do
     it 'can change subscription status' do
       sub_params = {
                     customer_id: @customer1.id,
