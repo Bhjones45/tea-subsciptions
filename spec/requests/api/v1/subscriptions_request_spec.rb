@@ -65,6 +65,34 @@ RSpec.describe 'Subscription requests' do
     end
   end
 
+  describe 'GET /api/v1/customers/:id/subscriptions' do
+    it 'can list all subscriptions for a customer' do
+      sub1 = Subscription.create(
+                                customer_id: @customer1.id,
+                                tea_id: @tea1.id,
+                                title: 'Super Tea',
+                                price: 10.00,
+                                status: 'active',
+                                frequency: 'monthly'
+                              )
+      sub2 = Subscription.create(
+                                customer_id: @customer1.id,
+                                tea_id: @tea2.id,
+                                title: 'Not So Super Tea',
+                                price: 7.00,
+                                status: 'inactive',
+                                frequency: 'monthly'
+                              )
+      get "/api/v1/customers/#{@customer1.id}/subscriptions"
+      expect(response).to be_successful
+
+      expect(response.body).to include('Super Tea')
+      expect(response.body).to include('Not So Super Tea')
+      expect(sub1.status).to eq('active')
+      expect(sub2.status).to eq('inactive')
+    end
+  end
+
   describe 'sad path' do
     xit 'can render 404 error when no tea is found' do
       sub_params = {
