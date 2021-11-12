@@ -9,7 +9,7 @@ class Api::V1::SubscriptionsController < ApplicationController
     tea = Tea.find(params[:tea_id])
     subscription = customer.subscriptions.create(subscription_params.merge(tea_id: tea.id))
     if subscription.save
-      render json: SubscriptionSerializer.new(subscription) #201
+      render json: SubscriptionSerializer.new(subscription), status: 201
     else
       render json: {:error => 'Record not found'}, status: 404
     end
