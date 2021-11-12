@@ -94,14 +94,13 @@ RSpec.describe 'Subscription requests' do
   end
 
   describe 'sad path' do
-    xit 'can render 404 error when no tea is found' do
+    it 'can render 404 error when no tea is found' do
       sub_params = {
                     customer_id: @customer1.id,
                     tea_id: @tea2.id,
                     title: 'Super Tea',
                     price: 10.00,
                     status: 'active',
-                    frequency: 'monthly'
                   }
      post "/api/v1/customers/#{@customer1.id}/subscriptions", params: sub_params
      expect(response.status).to eq(404)
